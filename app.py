@@ -270,8 +270,8 @@ with st.sidebar:
     st.markdown("### 📁 رفع الملف")
     uploaded_file = st.file_uploader(
         "ارفع ملف Excel أو CSV",
-        type=["xlsx", "xls", "csv"],
-        help="يدعم Excel و CSV"
+        type=["xlsx", "xls", "csv","parquet"],
+        help="يدعم Excel و CSV,parquet"
     )
 
     st.markdown("---")
