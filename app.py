@@ -347,7 +347,6 @@ def load_data(file):
     if file.name.endswith(".csv"):
         return pd.read_csv(file, encoding="utf-8-sig")
     return pd.read_excel(file)
-
 with st.spinner("⏳ جاري تحليل البيانات..."):
     try:
         df = load_data(uploaded_file)
