@@ -454,7 +454,7 @@ with tabs[0]:
                 fig.update_layout(height=450)
 
             styled_fig(fig, f"📊 {mg}  —  أعلى {top_n} تصنيف بإجمالي المبيعات")
-            st.plotly_chart(fig, use_container_width=True, key=f"tab1_{mg}")
+            st.plotly_chart(fig, width='stretch', key=f"tab1_{mg}")
             st.markdown("</div>", unsafe_allow_html=True)
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -489,7 +489,7 @@ with tabs[1]:
             styled_fig(fig, f"📅 {mg}  —  اتجاه المبيعات {view_mode}")
             with st.container():
                 st.markdown('<div class="chart-card">', unsafe_allow_html=True)
-                st.plotly_chart(fig, use_container_width=True, key=f"tab2_{mg}_{view_mode}")
+                st.plotly_chart(fig, width='stretch', key=f"tab2_{mg}_{view_mode}")
                 st.markdown("</div>", unsafe_allow_html=True)
 
             # Line trend (total)
@@ -500,7 +500,7 @@ with tabs[1]:
                                markers=True, color_discrete_sequence=["#facc15"], height=280)
                 fig2.update_traces(line_width=3, marker_size=10)
                 styled_fig(fig2, f"📈 {mg}  —  إجمالي المبيعات السنوي")
-                st.plotly_chart(fig2, use_container_width=True, key=f"tab2_total_{mg}")
+                st.plotly_chart(fig2, width='stretch', key=f"tab2_total_{mg}")
 
 # ════════════════════════════════════════════════════════════════════════════
 # TAB 3 – Distribution
@@ -525,7 +525,7 @@ with tabs[2]:
         col = cols_row[i % 2]
         with col:
             st.markdown('<div class="chart-card">', unsafe_allow_html=True)
-            st.plotly_chart(fig, use_container_width=True, key=f"tab3_{mg}")
+            st.plotly_chart(fig, width='stretch', key=f"tab3_{mg}")
             st.markdown("</div>", unsafe_allow_html=True)
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -554,7 +554,7 @@ with tabs[3]:
         fig.update_coloraxes(colorbar_tickfont_color="#e2e8f0")
 
         st.markdown('<div class="chart-card">', unsafe_allow_html=True)
-        st.plotly_chart(fig, use_container_width=True, key="heatmap")
+        st.plotly_chart(fig, width='stretch', key="heatmap")
         st.markdown("</div>", unsafe_allow_html=True)
 
         # Scatter if value col exists
@@ -568,7 +568,7 @@ with tabs[3]:
                               size="الكمية", hover_name=mg_cols[0],
                               color_discrete_sequence=COLORS, height=420)
             styled_fig(fig2, f"📌 العلاقة بين الكمية والقيمة حسب {mg_cols[0]}")
-            st.plotly_chart(fig2, use_container_width=True, key="scatter")
+            st.plotly_chart(fig2, width='stretch', key="scatter")
     else:
         st.info("تحتاج لاختيار عمودين أو أكثر من أعمدة التصنيف لعرض خريطة التقاطع.")
 
@@ -586,7 +586,7 @@ with tabs[4]:
         display_df = df
 
     st.markdown(f"**إجمالي السجلات المعروضة: {len(display_df):,}**")
-    st.dataframe(display_df.head(500), use_container_width=True, height=400)
+    st.dataframe(display_df.head(500), width='stretch', height=400)
 
     # Download
     buf = io.BytesIO()
