@@ -270,8 +270,8 @@ with st.sidebar:
     st.markdown("### 📁 رفع الملف")
     uploaded_file = st.file_uploader(
         "ارفع ملف Excel أو CSV",
-        type=["xlsx", "xls", "csv","parquet"],
-        help="يدعم Excel و CSV,parquet"
+        type=["xlsx", "xls", "csv", "parquet"],
+        help="يدعم Excel و CSV"
     )
 
     st.markdown("---")
@@ -346,7 +346,10 @@ if uploaded_file is None:
 def load_data(file):
     if file.name.endswith(".csv"):
         return pd.read_csv(file, encoding="utf-8-sig")
+    if file.name.endswith(".parquet"):
+        return pd.read_parquet(file)
     return pd.read_excel(file)
+
 with st.spinner("⏳ جاري تحليل البيانات..."):
     try:
         df = load_data(uploaded_file)
